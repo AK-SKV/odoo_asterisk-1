@@ -1,0 +1,27 @@
+version: '3.2'
+services:
+  nginx:
+    ports:
+      - 8080:80
+
+  odoo:
+    volumes:
+      - "./odoo/local-src:/opt/odoo/local-src"
+      - "./odoo/external-src:/opt/odoo/external-src"
+      - "./odoo/songs:/opt/odoo/songs"
+      - "./odoo/migration.yml:/opt/odoo/migration.yml"
+      - "./odoo/data:/opt/odoo/data"
+
+  #odoo_mqtt_broker:
+  #  volumes:
+  #    - "./odoo_mqtt_broker/odoo_mqtt_broker.py:/odoo_mqtt_broker.py"
+
+  asterisk:
+    ports:
+      - 5060:5060/udp
+      - 8010:8010
+    environment:
+      - UID=test
+    volumes:
+      # DONT DO THIS AS YOU LOOSE ALL /etc system files :-)  - "./asterisk/etc/:/etc/"
+      - "./asterisk/services/:/services/"

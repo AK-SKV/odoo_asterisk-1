@@ -1,0 +1,16 @@
+ODOO_HOST = '{{ default .Env.ODOO_IP "odoo" }}'
+ODOO_PORT = 8069
+ODOO_POLLING_PORT = 8072
+ODOO_DB = '{{ .Env.ODOO_DB }}'
+ODOO_USER = '{{ .Env.ODOO_USER }}'
+ODOO_PASSWORD = '{{ .Env.ODOO_PASSWORD }}'
+
+ASTERISK_HELPER_URL = 'http://localhost:8010'
+
+UPDATE_CDR_DELAY = 5 # Delay X sec before updating cdr to make sure it's in DB.
+UPDATE_CHANNEL_DELAY = 1 # Delay X sec before updating cdr to make sure it's in DB.
+RECORDING_DOWNLOAD_DELAY = 1 # Delay to let Asterisk close recorded file.
+
+LOG_CONSOLE = True
+LOG_FILE = '/tmp/services.log'
+LOG_LEVEL = 'DEBUG'
